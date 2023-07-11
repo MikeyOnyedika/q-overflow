@@ -1,8 +1,14 @@
 import './globals.css'
+import Image from "next/image"
+import stackOverflow from "./assets/stackoverflow.svg"
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Ubuntu } from 'next/font/google'
+import PostContext from "./contexts/PostContext"
+import CompStateContext from "./contexts/ComponentStateContext"
+import StatusMessageContext from "./contexts/StatusMessageContext"
+import Header from './components/Header'
 
-const inter = Inter({ subsets: ['latin'] })
+const font = Ubuntu({ subsets: ['latin'], weight: ["400", "700", "500"] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +22,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={font.className}>
+        <StatusMessageContext>
+          <CompStateContext>
+            <Header />
+            <main>
+              <PostContext>
+                {children}
+              </PostContext>
+            </main>
+          </CompStateContext>
+        </StatusMessageContext>
+      </body>
     </html>
   )
 }
