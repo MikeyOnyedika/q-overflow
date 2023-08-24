@@ -17,8 +17,7 @@ export const SearchStackoverflow = function () {
                     <Image src={xmark} alt="x mark" className="w-6" />
                 </button>
                 <div className="w-full flex flex-col ">
-                    <Searchbar handleBtnAction={() => handleSearchStackOverflow()} actionBtnText="Search" />
-
+                    {/* <Searchbar handleBtnAction={() => handleSearchStackOverflow()} actionBtnText="Search" /> */}
                 </div>
                 <div>
 

@@ -8,6 +8,7 @@ import { useCompStateContext } from "../contexts/ComponentStateContext";
 import { SearchStackoverflow } from "../components/SearchStackOverflow";
 
 const initialFormState = {
+  _id: "", // TODO: clean this up later. initalFormState should not have _id
   title: "",
   description: "",
   answer: "",
@@ -22,13 +23,13 @@ export default function Posts() {
 
 
 
-  useEffect(() => {
-    filterPosts(searchTerm)
-  }, [searchTerm])
+  // useEffect(() => {
+  //   filterPosts(searchTerm)
+  // }, [searchTerm])
 
 
-  function filterPosts(){
-  }
+  // function filterPosts(){
+  // }
 
 
 
