@@ -20,7 +20,6 @@ export default function PostProvider({ children }) {
     async function getPosts() {
         const { data, status } = await api.get("/posts")
         if (status === 200) {
-            console.log("data: ", data)
             setPosts(data)
         }
     }

@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { useRouter } from "next/navigation"
 
 export const Post = ({ post, onEditAction }) => {
@@ -9,8 +8,8 @@ export const Post = ({ post, onEditAction }) => {
     return (
         <li role="button" className="flex">
             <button onClick={() => openPost()}   className="flex w-full gap-3 bg-fuchsia-50 rounded-md border-w border-2 border-fuchsia-100 p-2 hover:bg-fuchsia-100 hover:border-fuchsia-300 transition duration-200">
-                <div className="flex flex-col gap-3 w-full items-start">
-                    <h2 className="font-medium text-fuchsia-950 text-3xl">{post.title}</h2>
+                <div className="flex flex-col gap-3 w-full items-start text-start">
+                    <h2 className="font-medium text-fuchsia-950 text-3xl line-clamp-2 w-full">{post.title}</h2>
                     <p className="text-fuchsia-950 line-clamp-1">{post.description}</p>
                 </div>
                 <button onClick={(e) => onEditAction(e)}  type="button" className="whitespace-nowrap w-fit h-fit text-sm bg-fuchsia-300 rounded-full px-4 py-2 text-fuchsia-800 shadow-md">Edit</button>

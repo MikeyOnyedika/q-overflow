@@ -17,11 +17,19 @@ const initialFormState = {
 export default function Posts() {
   const { posts, addPost } = usePostContext()
   const { showPostForm, openPostForm, showSOSearch, closePostForm } = useCompStateContext()
+  const [searchTerm, setSearchTerm] = useState("")
   const [formData, setFormData] = useState(initialFormState)
 
+
+
   useEffect(() => {
-    console.log("formData: ", formData)
-  }, [formData])
+    filterPosts(searchTerm)
+  }, [searchTerm])
+
+
+  function filterPosts(){
+  }
+
 
 
   function handleOnChange(update) {
@@ -44,10 +52,11 @@ export default function Posts() {
 
 
 
+
+
   function clearFormData() {
     setFormData(initialFormState)
   }
-
 
   return (
     <section className="p-3 flex flex-col gap-3">
@@ -58,14 +67,19 @@ export default function Posts() {
             closePostForm()
           }} />
         ) : (
-          <Searchbar handleBtnAction={() => openPostForm()} actionBtnText={"Create Post"} />
-        )
+            <Searchbar  handleSetValue={(e) => setSearchTerm(e.target.value)} value={searchTerm} handleBtnAction={() => openPostForm()} actionBtnText={"Create Post"} />
+          )
       }
       <ul className="flex flex-col gap-3 p-2">
         {
-          posts && posts.length > 0 ? posts.map(post => <Post key={post._id} post={post} onEditAction={(e) => prepopulatePostForm(e, post)} />):  (
-            <p className="text-gray-400 text-3xl text-center">You have no posts yet. Create one already</p>
-          )
+          posts ? (posts.length > 0 ? posts.map(post => ( 
+            <Post key={post._id} post={post} onEditAction={(e) => prepopulatePostForm(e, post)} />)
+          ):  (
+              <p className="text-gray-400 text-3xl text-center">You have no posts yet. Create one already</p>
+            )
+          ): (
+              <p className="text-gray-400 text-3xl text-center">Loading...</p>
+            )
         }
       </ul>
 

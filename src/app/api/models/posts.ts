@@ -15,7 +15,7 @@ export async function createPost(post: any) {
         const newPost = await collection.findOne(query)
 
         return newPost
-    } catch (err) {
+    } catch (err: any) {
         console.log(err)
         return err.toString()
     }
@@ -42,7 +42,7 @@ export async function updatePost(post) {
         }
 
         return update.value
-    } catch (err) {
+    } catch (err: any) {
         console.log(err)
         return err.toString()
     }
@@ -55,7 +55,7 @@ export async function deletePost(id){
         const query = { _id: new ObjectId(id) }
         const deletedP = await collection.findOneAndDelete(query)
         return deletedP.value
-    } catch (err) {
+    } catch (err: any) {
         console.log(err)
         return err.tostring()
     }
@@ -78,7 +78,7 @@ export async function getPosts() {
             }
         }
         return results
-    } catch (err) {
+    } catch (err: any) {
         console.log(err)
         return err.tostring()
     }

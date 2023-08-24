@@ -43,9 +43,9 @@ export default function Post() {
                         <h2 className="text-4xl break-all">{post?.title}</h2>
                         <p className="break-all">{post.description}</p>
                     </div>
-                    <div>
+                    <div className="w-full">
                         <h3 className="font-bold text-lg">Answer</h3>
-                        <p className="break-all whitespace-pre">{post.answer}</p>
+                        <p className="break-all  whitespace-pre-line">{post.answer}</p>
                     </div>
                     {
                         post.links && post.links?.length > 0 && (
